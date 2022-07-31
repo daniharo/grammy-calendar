@@ -1,11 +1,14 @@
 import {
   Composer,
-  Context,
-  MiddlewareFn,
-  MiddlewareObj,
+  type Context,
+  type MiddlewareFn,
+  type MiddlewareObj,
   type InlineKeyboardMarkup,
 } from "./deps.deno.ts";
-import { CalendarHelper, type CalendarOptions } from "./CalendarHelper.ts";
+import { CalendarHelper } from "./CalendarHelper.ts";
+import { type CalendarOptions, type CalendarContext } from "./types.ts";
+
+type CustomContext = Context & CalendarContext;
 
 export class Calendar<T extends CustomContext = CustomContext>
   implements InlineKeyboardMarkup, MiddlewareObj<T>
@@ -87,9 +90,3 @@ export class Calendar<T extends CustomContext = CustomContext>
     return CalendarComposer.middleware();
   }
 }
-
-export type CalendarContext = {
-  calendarSelectedDate?: Date;
-};
-
-type CustomContext = Context & CalendarContext;

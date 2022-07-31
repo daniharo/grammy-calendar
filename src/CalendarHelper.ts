@@ -1,54 +1,27 @@
 import { type InlineKeyboardButton, InlineKeyboard } from "./deps.deno.ts";
+import { type CalendarOptions } from "./types.ts";
 
-export interface CalendarOptions {
-  defaultDate: Date;
-  startWeekDay: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  weekDayNames: readonly [
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string
-  ];
-  monthNames: readonly [
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string,
-    string
-  ];
-  minDate?: Date;
-  maxDate?: Date;
-  hideIgnoredWeeks: boolean;
-  ignoreWeekDays: readonly number[];
-  shortcutButtons: InlineKeyboardButton[];
-}
+type OptionalCalendarOptions = "minDate" | "maxDate";
 
-const DEFAULT_OPTIONS: Omit<CalendarOptions, "defaultDate"> = {
+type InternalCalendarOptions = Pick<CalendarOptions, OptionalCalendarOptions> &
+  Required<Omit<CalendarOptions, OptionalCalendarOptions>>;
+
+const DEFAULT_OPTIONS: Omit<InternalCalendarOptions, "defaultDate"> = {
   startWeekDay: 1,
-  weekDayNames: ["D", "L", "M", "X", "J", "V", "S"],
+  weekDayNames: ["S", "M", "T", "W", "T", "F", "S"],
   monthNames: [
-    "Ene",
+    "Jan",
     "Feb",
     "Mar",
-    "Abr",
+    "Apr",
     "May",
     "Jun",
     "Jul",
-    "Ago",
+    "Aug",
     "Sep",
     "Oct",
     "Nov",
-    "Dic",
+    "Dec",
   ],
   ignoreWeekDays: [],
   hideIgnoredWeeks: false,
@@ -56,8 +29,8 @@ const DEFAULT_OPTIONS: Omit<CalendarOptions, "defaultDate"> = {
 };
 
 export class CalendarHelper {
-  #options: CalendarOptions;
-  constructor(options: Partial<CalendarOptions>) {
+  #options: InternalCalendarOptions;
+  constructor(options: CalendarOptions) {
     this.#options = Object.assign(
       { ...DEFAULT_OPTIONS, defaultDate: new Date() },
       options
