@@ -19,7 +19,9 @@ bot.use(session({
     calendarOptions: {} 
   })
 }));
-const calendarMenu = new Calendar<MyContext>();
+const calendarMenu = new Calendar<MyContext>(
+  (ctx) => ctx.session.calendarOptions
+);
 bot.use(calendarMenu);
 
 bot.on("message:text", async (ctx) => {
