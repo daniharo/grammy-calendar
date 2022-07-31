@@ -1,7 +1,7 @@
 {
   "name": "grammy-calendar",
   "description": "Calendar menu for grammY",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "daniharo",
   "license": "MIT",
   "engines": {
