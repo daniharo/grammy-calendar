@@ -44,8 +44,8 @@
     "framework",
     "library",
     "grammy",
-    "conversations",
-    "scenes",
-    "wizards"
+    "calendar",
+    "menu",
+    "form"
   ]
 }
