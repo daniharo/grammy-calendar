@@ -1,6 +1,8 @@
 # Grammy Calendar Menu
 [![npm](https://img.shields.io/npm/v/grammy-calendar?logo=npm&style=flat&labelColor=000&color=3b82f6)](https://www.npmjs.org/package/grammy-calendar)
 
+> **WARNING: unstable.** This is not completely stable yet. Please try it out and provide feedback, either by opening an issue or in the [group chat](https://t.me/grammyjs).
+
 
 > This grammY plugin ports [telegraf-calendar-telegram](https://github.com/gianlucaparadise/telegraf-calendar-telegram) to the grammY framework.
 
